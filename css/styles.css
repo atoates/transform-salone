@@ -205,9 +205,8 @@ li + li { margin-top: .25rem; }
   font-size: 1.15rem;
   color: var(--ink-900);
 }
-.nav-brand img { height: 44px; width: 44px; object-fit: contain; }
+.nav-brand img { height: 56px; width: auto; object-fit: contain; display: block; }
 .nav-brand span { display: none; }
-@media (min-width: 480px) { .nav-brand span { display: inline; } }
 
 .nav-links {
   display: none;
@@ -640,7 +639,7 @@ li + li { margin-top: .25rem; }
 .site-footer li { margin: var(--space-2) 0; }
 
 .footer-brand { max-width: 320px; }
-.footer-brand img { height: 56px; width: 56px; margin-bottom: var(--space-4); }
+.footer-brand img { height: 96px; width: auto; margin-bottom: var(--space-4); display: block; }
 .footer-brand p { color: rgba(255,255,255,.7); }
 
 .socials { display: flex; gap: var(--space-3); margin-top: var(--space-4); }
