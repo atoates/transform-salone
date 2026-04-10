@@ -302,16 +302,16 @@ li + li { margin-top: .25rem; }
   content: "";
   position: absolute; inset: 0;
   background:
-    linear-gradient(180deg, rgba(6, 59, 59, 0.55) 0%, rgba(6, 59, 59, 0.75) 100%),
-    linear-gradient(135deg, #0a6e6e 0%, #063b3b 100%);
-  z-index: -2;
+    linear-gradient(180deg, rgba(6, 59, 59, 0.35) 0%, rgba(6, 59, 59, 0.65) 100%);
+  z-index: -1;
 }
 .hero-bg {
   position: absolute; inset: 0;
   background-size: cover;
   background-position: center;
-  z-index: -3;
-  opacity: .55;
+  background-color: #063b3b;
+  z-index: -2;
+  opacity: 1;
 }
 .hero-content {
   padding: var(--space-9) var(--space-5);
@@ -703,6 +703,70 @@ li + li { margin-top: .25rem; }
 }
 .ig-tile:hover img { transform: scale(1.06); }
 .ig-tile:hover::after { opacity: 1; }
+
+/* --- Donate logo strip --------------------------------------------------- */
+.logo-strip {
+  padding: var(--space-6) 0;
+  background: var(--white);
+  border-bottom: 1px solid var(--ink-100);
+}
+.logo-strip-label {
+  text-align: center;
+  font-size: .75rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 var(--space-4);
+}
+.logo-strip-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-5) var(--space-6);
+}
+.logo-strip-list li {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  color: var(--ink-700);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  opacity: .8;
+  transition: opacity var(--transition);
+}
+.logo-strip-list li:hover { opacity: 1; }
+.logo-strip-list img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  display: block;
+}
+.logo-strip-list img.is-wide {
+  width: 120px;
+  height: 32px;
+}
+.logo-strip-list .gift-aid-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  padding: .35rem .7rem;
+  border: 2px solid var(--primary-dark);
+  border-radius: 999px;
+  color: var(--primary-dark);
+  font-size: .85rem;
+  letter-spacing: .02em;
+}
+.logo-strip-list .gift-aid-mark strong {
+  background: var(--sun-500);
+  color: var(--primary-dark);
+  padding: .05rem .4rem;
+  border-radius: 4px;
+}
 
 /* --- Prose (long form pages) -------------------------------------------- */
 .prose h2 { margin-top: var(--space-7); }
