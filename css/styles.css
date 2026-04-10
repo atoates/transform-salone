@@ -674,6 +674,37 @@ li + li { margin-top: .25rem; }
 */
 .reveal { opacity: 1; transform: none; }
 
+/* --- Instagram feed grid ------------------------------------------------ */
+.ig-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+@media (min-width: 780px) { .ig-grid { grid-template-columns: repeat(4, 1fr); } }
+.ig-tile {
+  position: relative;
+  display: block;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--ink-100);
+}
+.ig-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms ease;
+}
+.ig-tile::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(18, 163, 163, 0) 40%, rgba(6, 59, 59, .55) 100%);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.ig-tile:hover img { transform: scale(1.06); }
+.ig-tile:hover::after { opacity: 1; }
+
 /* --- Prose (long form pages) -------------------------------------------- */
 .prose h2 { margin-top: var(--space-7); }
 .prose h3 { margin-top: var(--space-6); }
