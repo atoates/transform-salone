@@ -173,8 +173,20 @@ li + li { margin-top: .25rem; }
   border-color: currentColor;
 }
 .btn-outline:hover { background: var(--primary); color: var(--white); }
-.section-dark .btn-outline { color: var(--white); }
-.section-dark .btn-outline:hover { background: var(--white); color: var(--primary-dark); }
+.section-dark .btn-outline,
+.hero .btn-outline,
+.cta-banner .btn-outline {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, .7);
+  background: rgba(255, 255, 255, .05);
+}
+.section-dark .btn-outline:hover,
+.hero .btn-outline:hover,
+.cta-banner .btn-outline:hover {
+  background: var(--white);
+  color: var(--primary-dark);
+  border-color: var(--white);
+}
 .btn-lg { padding: 1.05rem 1.8rem; font-size: 1.05rem; }
 
 /* --- Header / navigation ------------------------------------------------- */
