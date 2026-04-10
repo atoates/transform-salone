@@ -183,14 +183,35 @@
         </div>
 
         <!--
-          To show a live Instagram feed, sign up for a free widget service and
-          paste its embed snippet below in place of the static grid:
-            - LightWidget:  https://lightwidget.com
-            - SnapWidget:   https://snapwidget.com
-            - Elfsight:     https://elfsight.com/instagram-feed-widget
-          Each of these works on static sites / GitHub Pages.
+          LIVE INSTAGRAM FEED (LightWidget)
+          ---------------------------------
+          To activate the live feed:
+          1. Go to https://lightwidget.com, create a free account.
+          2. Connect the @transformsalone Instagram account.
+          3. Create a new widget: choose the 4-column grid, square tiles,
+             and set background to transparent so it blends with the page.
+          4. LightWidget will give you an iframe URL that looks like
+             https://cdn.lightwidget.com/widgets/<your-widget-id>.html
+          5. Replace the `data-src` value on the iframe below with that URL.
+          6. Delete or comment out the "ig-fallback" grid underneath; it's
+             only there so the page never looks broken before the widget is
+             wired in.
         -->
-        <div class="ig-grid">
+        <div class="ig-embed">
+          <iframe
+            class="lightwidget-widget"
+            src="about:blank"
+            data-src="https://cdn.lightwidget.com/widgets/REPLACE_WITH_WIDGET_ID.html"
+            scrolling="no"
+            allowtransparency="true"
+            allow="encrypted-media"
+            title="Transform Salone on Instagram"
+            loading="lazy"
+          ></iframe>
+        </div>
+
+        <!-- Fallback: shown until the LightWidget iframe src above is set. -->
+        <div class="ig-grid ig-fallback">
           <a class="ig-tile" href="https://www.instagram.com/transformsalone/" rel="noopener" target="_blank" aria-label="Instagram post">
             <img src="assets/images/classroom-hero.webp" alt="Students with hands raised during a lesson under a mango tree" loading="lazy" />
           </a>

@@ -84,6 +84,31 @@
     statEls.forEach(function (el) { io2.observe(el); });
   }
 
+  /* ---------- LightWidget activation ----------
+     The iframe has a data-src pointing at a LightWidget URL. If the URL has
+     been replaced with a real widget ID, swap it into src and hide the
+     fallback grid. Otherwise leave the fallback showing.
+  */
+  const lw = document.querySelector(".lightwidget-widget");
+  const fallback = document.querySelector(".ig-fallback");
+  if (lw) {
+    const url = lw.getAttribute("data-src") || "";
+    if (url && !url.includes("REPLACE_WITH_WIDGET_ID")) {
+      lw.setAttribute("src", url);
+      if (fallback) fallback.style.display = "none";
+      // LightWidget's auto-resize script
+      const s = document.createElement("script");
+      s.src = "https://cdn.lightwidget.com/widgets/lightwidget.js";
+      s.async = true;
+      document.body.appendChild(s);
+    } else {
+      // Widget not yet configured: hide the empty iframe so only the
+      // fallback grid is visible.
+      const embed = document.querySelector(".ig-embed");
+      if (embed) embed.style.display = "none";
+    }
+  }
+
   /* ---------- Update footer year ---------- */
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
