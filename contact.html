@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Transform Salone | Contact</title>
   <meta name="description" content="Get in touch with Transform Salone by email, phone or post. We&rsquo;d love to hear from you." />
-  <meta name="theme-color" content="#063b3b" />
+  <meta name="theme-color" content="#063b3b" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0a1014" media="(prefers-color-scheme: dark)" />
 
   <link rel="icon" type="image/webp" href="assets/images/logo-full-dark.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,9 +18,22 @@
   <meta property="og:description" content="Get in touch with Transform Salone by email, phone or post. We&rsquo;d love to hear from you." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://transformsalone.org/contact.html" />
+
+  <!-- Theme pre-init: avoid flash of unstyled theme by applying stored/system theme before paint. -->
+  <script>
+    (function() {
+      try {
+        var t = localStorage.getItem('ts-theme');
+        if (t === 'dark' || t === 'light') {
+          document.documentElement.setAttribute('data-theme', t);
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
-  <a href="#main" class="sr-only">Skip to content</a>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
 
   <header class="site-header">
     <nav class="nav" aria-label="Primary">
@@ -34,7 +48,13 @@
         <li><a data-nav="get-involved.html" href="get-involved.html">Get Involved</a></li>
         <li><a data-nav="contact.html" href="contact.html">Contact</a></li>
       </ul>
-      <a class="btn btn-primary nav-cta" href="donate.html">Donate</a>
+      <div class="nav-right">
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <a class="btn btn-primary nav-cta" href="donate.html">Donate</a>
+      </div>
       <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
         <span></span><span></span><span></span>
       </button>

@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Transform Salone | Donate</title>
   <meta name="description" content="Donate to Transform Salone via JustGiving, Wonderful.org, PayPal, cheque or standing order. 100% goes to Sierra Leone." />
-  <meta name="theme-color" content="#063b3b" />
+  <meta name="theme-color" content="#063b3b" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0a1014" media="(prefers-color-scheme: dark)" />
 
   <link rel="icon" type="image/webp" href="assets/images/logo-full-dark.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,9 +18,22 @@
   <meta property="og:description" content="Donate to Transform Salone via JustGiving, Wonderful.org, PayPal, cheque or standing order. 100% goes to Sierra Leone." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://transformsalone.org/donate.html" />
+
+  <!-- Theme pre-init: avoid flash of unstyled theme by applying stored/system theme before paint. -->
+  <script>
+    (function() {
+      try {
+        var t = localStorage.getItem('ts-theme');
+        if (t === 'dark' || t === 'light') {
+          document.documentElement.setAttribute('data-theme', t);
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
-  <a href="#main" class="sr-only">Skip to content</a>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
 
   <header class="site-header">
     <nav class="nav" aria-label="Primary">
@@ -34,7 +48,13 @@
         <li><a data-nav="get-involved.html" href="get-involved.html">Get Involved</a></li>
         <li><a data-nav="contact.html" href="contact.html">Contact</a></li>
       </ul>
-      <a class="btn btn-primary nav-cta" href="donate.html">Donate</a>
+      <div class="nav-right">
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <a class="btn btn-primary nav-cta" href="donate.html">Donate</a>
+      </div>
       <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
         <span></span><span></span><span></span>
       </button>
@@ -58,8 +78,71 @@
       <div class="hero-bg" style="background-image: url('assets/images/banner-donate.webp');"></div>
       <div class="hero-content">
         <span class="eyebrow">Donate</span>
-        <h1>Every pound goes to Sierra Leone</h1>
+        <h1 data-split>Every pound goes to Sierra Leone</h1>
         <p>We&rsquo;re all volunteers. No salaries, no offices, no fundraising overheads. Your gift, big or small, lands where it&rsquo;s needed.</p>
+      </div>
+    </section>
+
+    <!-- ============ Scrollytelling: what your donation does ============ -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-intro">
+          <span class="eyebrow">Where it goes</span>
+          <h2>Scroll to see what your gift changes</h2>
+          <p class="lead mx-auto">Every amount, big or small, reaches a real family. Here&rsquo;s what a single donation buys on the ground.</p>
+        </div>
+
+        <div class="scrolly" data-scrolly>
+          <div class="scrolly-inner">
+            <aside class="scrolly-sticky" aria-hidden="true">
+              <div class="scrolly-card">
+                <span class="scrolly-amount">&pound;20</span>
+                <h3 class="scrolly-title">A month of school fees</h3>
+                <p class="scrolly-description">Covers fees, books and uniform for one sponsored student for a month.</p>
+                <div class="scrolly-dots">
+                  <span class="is-active"></span><span></span><span></span><span></span>
+                </div>
+              </div>
+            </aside>
+            <div class="scrolly-panels">
+              <div class="scrolly-panel is-active"
+                   data-amount="&pound;20"
+                   data-title="A month of school fees"
+                   data-desc="Covers fees, books and uniform for one sponsored student for a month.">
+                <span class="amount">&pound;20</span>
+                <h3>A month of school</h3>
+                <p>Sponsor a child&rsquo;s fees, books and uniform for one month. Multiply that by twelve and you have put a child through an entire school year, something many families in rural Sierra Leone simply cannot afford on their own.</p>
+              </div>
+
+              <div class="scrolly-panel"
+                   data-amount="&pound;40"
+                   data-title="A 50kg bag of rice"
+                   data-desc="Feeds a family or small community group through a short crisis.">
+                <span class="amount">&pound;40</span>
+                <h3>A 50kg bag of rice</h3>
+                <p>Delivered to a family or community group in acute crisis. Last year supporters like you funded more than five tonnes of rice for households that had run out of food.</p>
+              </div>
+
+              <div class="scrolly-panel"
+                   data-amount="&pound;100"
+                   data-title="A solar streetlight panel"
+                   data-desc="Lights up a village path so children can study and women can walk home safely.">
+                <span class="amount">&pound;100</span>
+                <h3>A solar streetlight panel</h3>
+                <p>Your contribution pays for a single panel in our Light Up Salone campaign. When the sun sets over rural Sierra Leone, life used to stop. Now children can study after dark and women and girls can walk home safely.</p>
+              </div>
+
+              <div class="scrolly-panel"
+                   data-amount="&pound;500"
+                   data-title="A year of life-saving care"
+                   data-desc="Funds ongoing medical treatment for someone living with a long-term condition.">
+                <span class="amount">&pound;500</span>
+                <h3>A year of care</h3>
+                <p>Funds ongoing medical treatment for someone living with a long-term condition like sickle cell, epilepsy or diabetes. For many, it is the difference between managing a condition and dying quietly from it.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 

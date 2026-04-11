@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Transform Salone | Transforming lives in Sierra Leone</title>
   <meta name="description" content="Transform Salone is a UK-registered charity working alongside communities in Sierra Leone, providing education, medical care and food relief." />
-  <meta name="theme-color" content="#063b3b" />
+  <meta name="theme-color" content="#063b3b" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0a1014" media="(prefers-color-scheme: dark)" />
 
   <link rel="icon" type="image/webp" href="assets/images/logo-full-dark.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,9 +19,21 @@
   <meta property="og:description" content="A UK charity supporting communities in Sierra Leone through education, medical care and food relief." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://transformsalone.org/" />
+
+  <script>
+    (function() {
+      try {
+        var t = localStorage.getItem('ts-theme');
+        if (t === 'dark' || t === 'light') {
+          document.documentElement.setAttribute('data-theme', t);
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
-  <a href="#main" class="sr-only">Skip to content</a>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
 
   <!-- ================= Header ================= -->
   <header class="site-header">
@@ -36,7 +49,13 @@
         <li><a data-nav="get-involved.html" href="get-involved.html">Get Involved</a></li>
         <li><a data-nav="contact.html" href="contact.html">Contact</a></li>
       </ul>
-      <a class="btn btn-primary nav-cta" href="donate.html">Donate</a>
+      <div class="nav-right">
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <a class="btn btn-primary nav-cta" href="donate.html">Donate</a>
+      </div>
       <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
         <span></span><span></span><span></span>
       </button>
@@ -60,16 +79,34 @@
       <div class="hero-bg" style="background-image: url('assets/images/classroom-hero.webp');"></div>
       <div class="hero-content">
         <span class="hero-tag">Celebrating 10 years</span>
-        <h1>Transforming lives in Sierra Leone</h1>
+        <h1 data-split>Transforming lives in Sierra Leone</h1>
         <p>We walk alongside families and communities in Sierra Leone, helping people lift themselves out of poverty through education, medical care and food relief.</p>
         <div class="hero-cta">
           <a class="btn btn-primary btn-lg" href="donate.html">Donate</a>
           <a class="btn btn-outline btn-lg" href="about.html">Our story</a>
         </div>
       </div>
+      <div class="hero-scroll-cue" aria-hidden="true">Scroll</div>
     </section>
 
-    <!-- ================= What we do ================= -->
+    <!-- ================= Trust marquee ================= -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>100% of donations go to projects in Sierra Leone</span>
+        <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>UK registered charity 1162900</span>
+        <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Zero salaries, zero offices, zero overhead</span>
+        <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Gift Aid eligible for UK taxpayers</span>
+        <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Working in Sierra Leone since 2014</span>
+        <!-- Duplicated for seamless loop -->
+        <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>100% of donations go to projects in Sierra Leone</span>
+        <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>UK registered charity 1162900</span>
+        <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Zero salaries, zero offices, zero overhead</span>
+        <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Gift Aid eligible for UK taxpayers</span>
+        <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Working in Sierra Leone since 2014</span>
+      </div>
+    </div>
+
+    <!-- ================= What we do — bento grid ================= -->
     <section class="section">
       <div class="container">
         <div class="section-intro">
@@ -78,29 +115,54 @@
           <p class="lead mx-auto">Our work is focused and hands-on. Every penny donated goes directly to the projects you see below, managed by a team on the ground in Sierra Leone.</p>
         </div>
 
-        <div class="grid grid-3">
-          <article class="card reveal">
-            <div class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        <div class="bento">
+          <!-- Feature hero panel -->
+          <article class="bento-item bento-item--hero bento-item--lg reveal">
+            <div>
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </div>
+              <h3>Education that lasts a lifetime</h3>
+              <p>Sponsorships and scholarships that see students through primary school, secondary school and on to vocational training, college or university. Many of our sponsored students have gone on to become teachers, nurses and trades people in their own communities.</p>
             </div>
-            <h3>Education</h3>
-            <p>Sponsorships and scholarships that see students through primary school, secondary school and on to vocational training, college or university.</p>
+            <div class="pill-row">
+              <span class="pill">Fees &amp; uniform</span>
+              <span class="pill">Books &amp; supplies</span>
+              <span class="pill">University</span>
+            </div>
           </article>
 
-          <article class="card reveal">
+          <article class="bento-item bento-item--sm reveal">
             <div class="icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
             </div>
             <h3>Medical care</h3>
-            <p>Funding emergency treatment for those who cannot afford it, and ongoing care for people living with long-term conditions like sickle cell, epilepsy and diabetes.</p>
+            <p>Emergency treatment for those who cannot afford it, and ongoing care for people living with long-term conditions.</p>
           </article>
 
-          <article class="card reveal">
+          <article class="bento-item bento-item--sm reveal">
             <div class="icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.5 3 3.5.5-2.5 2.5.6 3.5L12 9.8 7.9 11.5l.6-3.5L6 5.5 9.5 5z"/><path d="M4 22h16"/><path d="M6 22V12h12v10"/></svg>
             </div>
             <h3>Food relief</h3>
-            <p>Rice distribution for families and groups struggling in times of crisis. Last year we delivered over five tonnes of rice to households in need.</p>
+            <p>Rice distribution for families and groups struggling in times of crisis. Over five tonnes delivered last year.</p>
+          </article>
+
+          <article class="bento-item bento-item--accent bento-item--md reveal">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            </div>
+            <h3>Light Up Salone</h3>
+            <p>Our 10-year campaign: solar streetlights for four villages so life can continue after sunset.</p>
+            <span class="bento-number" data-count="80" data-suffix=" lights">0 lights</span>
+          </article>
+
+          <article class="bento-item bento-item--md reveal">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </div>
+            <h3>Reading groups &amp; English</h3>
+            <p>Small reading groups and spoken English sessions that build confidence, literacy and a lifelong love of books.</p>
           </article>
         </div>
       </div>
