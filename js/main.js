@@ -1,11 +1,28 @@
 /* Transform Salone - main.js
-   Small, vanilla-JS helpers: mobile nav, scroll reveal, animated stats.
+   Vanilla helpers: sticky header state, mobile nav, stat counters, LightWidget.
 */
 (function () {
   "use strict";
 
-  // Mark body as JS-enabled so reveal/hide styles kick in.
-  document.body.classList.add("js-enabled");
+  /* ---------- Sticky header: scrolled state ---------- */
+  const header = document.querySelector(".site-header");
+  let ticking = false;
+  function updateHeaderScroll() {
+    ticking = false;
+    if (!header) return;
+    const y = window.scrollY || document.documentElement.scrollTop;
+    header.classList.toggle("is-scrolled", y > 16);
+  }
+  function onScroll() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(updateHeaderScroll);
+    }
+  }
+  if (header) {
+    updateHeaderScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
 
   /* ---------- Mobile nav ---------- */
   const toggle = document.querySelector(".nav-toggle");
@@ -14,12 +31,16 @@
     toggle.addEventListener("click", function () {
       const open = drawer.classList.toggle("is-open");
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      document.body.style.overflow = open ? "hidden" : "";
     });
     // Close when a link is tapped
     drawer.querySelectorAll("a").forEach(function (a) {
       a.addEventListener("click", function () {
         drawer.classList.remove("is-open");
         toggle.setAttribute("aria-expanded", "false");
+        toggle.setAttribute("aria-label", "Open menu");
+        document.body.style.overflow = "";
       });
     });
   }
@@ -32,25 +53,6 @@
       link.classList.add("is-active");
     }
   });
-
-  /* ---------- Scroll reveal ---------- */
-  const revealEls = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window && revealEls.length) {
-    const io = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12 }
-    );
-    revealEls.forEach(function (el) { io.observe(el); });
-  } else {
-    revealEls.forEach(function (el) { el.classList.add("is-visible"); });
-  }
 
   /* ---------- Animated stat counters ----------
      Initial text content is the target (so no-JS shows it too).
