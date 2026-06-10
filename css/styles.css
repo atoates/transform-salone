@@ -752,28 +752,29 @@ li + li { margin-top: .25rem; }
   mix-blend-mode: overlay;
 }
 .hero-bg {
-  position: absolute; inset: 0;
+  position: absolute;
+  /* Bleed past edges so Ken Burns / parallax never expose gaps */
+  inset: -20%;
   background-size: cover;
   background-position: center;
   background-color: #063b3b;
   z-index: -2;
-  opacity: 1;
   transform-origin: center center;
   will-change: transform;
 }
 
-/* Ken Burns slow zoom */
+/* Ken Burns slow zoom — scale only, no translate (translate caused bottom gap) */
 @media (prefers-reduced-motion: no-preference) {
   .hero-bg {
     animation: hero-kenburns 32s ease-in-out infinite alternate;
   }
 }
 @keyframes hero-kenburns {
-  0%   { transform: scale(1.02) translate(-0.4%, 0.4%); }
-  100% { transform: scale(1.12) translate(0.8%, -0.8%); }
+  0%   { transform: scale(1.05); }
+  100% { transform: scale(1.12); }
 }
 
-/* Scroll-driven parallax — moves bg upward as the user scrolls */
+/* Scroll-driven parallax — subtle, stays within bleed zone */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .hero-bg {
@@ -784,7 +785,7 @@ li + li { margin-top: .25rem; }
     }
     @keyframes hero-parallax {
       from { translate: 0 0; }
-      to   { translate: 0 -14%; }
+      to   { translate: 0 -6%; }
     }
   }
 }
