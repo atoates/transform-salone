@@ -234,28 +234,6 @@
   });
 
   /* ------------------------------------------------------------------
-     MAGNETIC BUTTONS — primary CTAs gently follow the pointer
-     ------------------------------------------------------------------ */
-  if (!prefersReducedMotion && window.matchMedia("(pointer: fine)").matches) {
-    document.querySelectorAll(".btn-primary.btn-lg, .hero-cta .btn, .cta-banner .btn-primary").forEach(function (btn) {
-      let raf = 0;
-      btn.addEventListener("pointermove", function (e) {
-        const r = btn.getBoundingClientRect();
-        const x = e.clientX - (r.left + r.width / 2);
-        const y = e.clientY - (r.top + r.height / 2);
-        cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(function () {
-          btn.style.transform = "translate(" + (x * 0.18).toFixed(2) + "px, " + (y * 0.22).toFixed(2) + "px)";
-        });
-      });
-      btn.addEventListener("pointerleave", function () {
-        cancelAnimationFrame(raf);
-        btn.style.transform = "";
-      });
-    });
-  }
-
-  /* ------------------------------------------------------------------
      SCROLLYTELLING DONATION IMPACT
      ------------------------------------------------------------------ */
   const scrolly = document.querySelector("[data-scrolly]");
