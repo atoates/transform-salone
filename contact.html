@@ -111,22 +111,48 @@
         <div class="text-center" style="margin-bottom: var(--space-6);">
           <span class="eyebrow">Send a message</span>
           <h2>Drop us a line</h2>
-          <p class="lead mx-auto">We&rsquo;ll get back to you as soon as we can. This form currently opens in your email client; to enable direct submissions, connect a service like Formspree or Netlify Forms.</p>
+          <p class="lead mx-auto">We read every message and usually reply within a few days. Ask about sponsorship, volunteering, fundraising, or anything else.</p>
         </div>
-        <form class="form" action="mailto:hello@transformsalone.org" method="post" enctype="text/plain">
-          <div class="field">
-            <label for="name">Your name</label>
-            <input type="text" id="name" name="name" required />
+
+        <div id="form-success" class="form-notice form-notice--success" hidden role="status">
+          <strong>Thank you!</strong> Your message has been sent. We&rsquo;ll be in touch as soon as we can.
+        </div>
+
+        <form class="form" action="https://formsubmit.co/hello@transformsalone.org" method="POST">
+          <input type="hidden" name="_subject" value="New enquiry from transformsalone.org" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_next" value="https://transformsalone.org/contact.html?sent=1" />
+          <input type="text" name="_honey" class="sr-only" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+          <div class="form-row">
+            <div class="field">
+              <label for="name">Your name</label>
+              <input type="text" id="name" name="name" required autocomplete="name" />
+            </div>
+            <div class="field">
+              <label for="email">Your email</label>
+              <input type="email" id="email" name="email" required autocomplete="email" />
+            </div>
           </div>
           <div class="field">
-            <label for="email">Your email</label>
-            <input type="email" id="email" name="email" required />
+            <label for="topic">What&rsquo;s this about?</label>
+            <select id="topic" name="topic" required>
+              <option value="" disabled selected>Select a topic</option>
+              <option value="Sponsoring a student">Sponsoring a student</option>
+              <option value="Making a donation">Making a donation</option>
+              <option value="Fundraising">Fundraising</option>
+              <option value="Volunteering in Sierra Leone">Volunteering in Sierra Leone</option>
+              <option value="Light Up Salone campaign">Light Up Salone campaign</option>
+              <option value="General enquiry">General enquiry</option>
+            </select>
           </div>
           <div class="field">
             <label for="message">Your message</label>
-            <textarea id="message" name="message" required></textarea>
+            <textarea id="message" name="message" required placeholder="Tell us a little about how you&rsquo;d like to help, or what you&rsquo;d like to know."></textarea>
           </div>
           <button class="btn btn-primary" type="submit">Send message</button>
+          <p class="form-notice" style="margin: 0;">Prefer email? Write to <a href="mailto:hello@transformsalone.org">hello@transformsalone.org</a> directly.</p>
         </form>
       </div>
     </section>

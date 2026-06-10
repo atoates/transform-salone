@@ -118,7 +118,16 @@
           <span class="eyebrow">Fundraising goal</span>
           <h2>We&rsquo;re aiming to raise $30,000</h2>
           <p class="lead mx-auto">Every pound helps us reach the target. You can sponsor a single panel, its installation, or simply give what you can.</p>
-          <div style="margin-top: var(--space-6);">
+          <div class="fund-progress" aria-label="Fundraising progress">
+            <div class="fund-progress__bar">
+              <span class="fund-progress__fill" style="--progress: 35%;"></span>
+            </div>
+            <div class="fund-progress__labels">
+              <span>Raised so far</span>
+              <span>Target: $30,000</span>
+            </div>
+          </div>
+          <div style="margin-top: var(--space-6); display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center;">
             <a class="btn btn-primary btn-lg" href="donate.html">Donate now</a>
             <a class="btn btn-outline btn-lg" href="contact.html">Become a partner</a>
           </div>
@@ -129,9 +138,21 @@
     <section class="section">
       <div class="container">
         <div class="grid grid-3">
-          <div class="card reveal"><h3>£25</h3><p>Helps toward the cost of installing one solar fitting.</p></div>
-          <div class="card reveal"><h3>£100</h3><p>Contributes to a full solar streetlight panel.</p></div>
-          <div class="card reveal"><h3>£500+</h3><p>Sponsors a panel plus installation, with a dedication if you&rsquo;d like one.</p></div>
+          <article class="card price-card reveal">
+            <div class="price">&pound;25</div>
+            <h3>Installation help</h3>
+            <p>Contributes toward fitting a single solar light in a village path.</p>
+          </article>
+          <article class="card price-card price-card--featured reveal">
+            <div class="price">&pound;100</div>
+            <h3>One panel</h3>
+            <p>Funds a full solar streetlight panel &mdash; the heart of the campaign.</p>
+          </article>
+          <article class="card price-card reveal">
+            <div class="price">&pound;500+</div>
+            <h3>Full sponsorship</h3>
+            <p>Panel plus installation. We&rsquo;ll dedicate it to you or someone you love, if you wish.</p>
+          </article>
         </div>
       </div>
     </section>
